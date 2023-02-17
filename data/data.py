@@ -2,8 +2,7 @@ import pandas as pd
 from pymongo import MongoClient
 from dotenv import dotenv_values
 
-config = dotenv_values("../.env")
-print(config['PASSWORD'])
+config = dotenv_values(".env")
 wb = pd.read_csv(
     './batters.csv',
     # index_col=["PlayerId"]
@@ -19,7 +18,7 @@ wb["pts"] = wb["H"] + wb["2B"] + wb["3B"] * 2 + wb["HR"] * 3 + wb["RBI"] + wb["R
 wb.sort_values('pts', ascending=False)
 
   # wb.to_csv('./batters_points.csv')
-  # TODO remove extra stats
+# TODO remove duplicates
   # TODO fix issue with PlayerId
   # TODO split push to database
   # TODO someday use venv
